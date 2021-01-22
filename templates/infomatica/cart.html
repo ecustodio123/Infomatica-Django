@@ -1,0 +1,189 @@
+{% extends 'layouts/base.html' %} {% load static %} 
+
+{% block content %}
+
+    <div class="products-container container-fluid">
+        <div class="product-header py-1">
+            <h5 class="product-title">PRODUCT</h5>
+            <h5 class="price">PRICE</h5>
+            <h5 class="quantity">QUANTITY</h5>
+            <h5 class="total">TOTAL</h5>
+        </div>
+        <div class="products">
+
+        </div>
+    </div>
+
+    <div class="container wow fadeIn">
+        <!--Main layout-->
+        <main>
+            <div class="container wow fadeIn">
+                <h2 class="my-5 h2 text-center">Checkout form</h2>
+                <div class="row">
+                    <div class="col-md-8 mb-4">
+                        <div class="card">
+                            <form class="card-body">
+                                <div class="row">
+
+                                    <div class="col-md-6 mb-2">
+                                        <div class="md-form ">
+                                            <label for="firstName">Nombres</label>
+                                            <input type="text"placeholder="Tu Nombre" id="firstName" class="form-control">
+                                        </div>
+                    
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="md-form">
+                                            <label for="lastName">Apellidos</label>
+                                            <input type="text" placeholder="Tu Apellido" id="lastName" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-2">
+                                            <div class="md-form">
+                                                <label for="lastName">Nombre de tu empresa</label>
+                                                <input type="text" placeholder="Tu empresa" id="lastName" class="form-control">
+                                            </div>
+                                        </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="md-form">
+                                            <label for="lastName">DNI / RUC</label>
+                                            <input type="text" placeholder="Tu DNI o RUC" id="lastName" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="md-form input-group pl-0 mb-2">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control py-0" placeholder="Tu teléfono" aria-describedby="basic-addon1">
+                                </div>
+
+                                <div class="md-form mb-2">
+                                    <label for="email" >Email</label>
+                                    <input type="text" id="email" class="form-control" placeholder="tucorreo@mail.com">
+                                </div>
+
+                                <div class="md-form mb-2">
+                                    <label for="address" class="">Tu dirección</label>
+                                    <input type="text" id="address" class="form-control" placeholder="Av. Tu dirección">
+                                </div>
+                                <div class="md-form mb-2">
+                                    <label for="address-2" class="">Tu dirección (optional)</label>
+                                    <input type="text" id="address-2" class="form-control" placeholder="Tu dirección (optional">
+                                </div>
+            
+                                <hr>
+                
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="same-address">
+                                    <label class="custom-control-label" for="same-address">La dirección de envío es la misma que mi dirección de facturación.</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="save-info">
+                                    <label class="custom-control-label" for="save-info">Guardar esta información para la próxima vez</label>
+                                </div>
+                
+                                <hr>
+                
+                                <div class="d-block my-1">
+                                <div class="custom-control custom-radio">
+                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                                    <label class="custom-control-label" for="credit">Tarjeta de Crédito</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="debit">Tarjeta de Debito</label>
+                                </div>
+                                <!-- <div class="custom-control custom-radio">
+                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <label class="custom-control-label" for="paypal">Paypal</label>
+                                </div> -->
+                                <hr>
+
+                                </div>
+                                <div class="row">
+                                <div class="col-md-6 mb-1">
+                                    <label for="cc-name">Nombres Completos</label>
+                                    <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                                    <small class="text-muted">Nombre completo como en la tarjeta</small>
+                                    <div class="invalid-feedback">
+                                        El nombre del titular de la tarjeta es requerida
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-1">
+                                    <label for="cc-number">Numeros de la tarjeta</label>
+                                    <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        Numeros de la tarjeta son requeridos
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row">
+                                <div class="col-md-3 mb-1">
+                                    <label for="cc-expiration">Expiración</label>
+                                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        Los datos de expiración son requeridas
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-1">
+                                    <label for="cc-expiration">CVV</label>
+                                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                    <div class="invalid-feedback">
+                                        El codigo de CVV es requerido
+                                    </div>
+                                </div>
+                                </div>
+                                <hr class="mb-1">
+                                <button class="btn btn-primary btn-lg btn-block trigger-btn" href="#myModal"  type="submit" data-toggle="modal">Comprar</button>
+                                
+                                <div class="text-center">
+                                    <!-- Button HTML (to Trigger Modal) -->
+                                    <!-- <a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Confirm Modal</a> -->
+                                </div>
+                                
+                                <!-- Modal HTML -->
+                                <div id="myModal" class="modal fade">
+                                    <div class="modal-dialog modal-confirm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <div class="icon-box">
+                                                    <!-- <i class="material-icons">&#xE876;</i> -->
+                                                    <i class="fas fa-check">&#xE876;</i>
+                                                </div>				
+                                                <h4 class="modal-title w-100">¡Muchas gracias!</h4>	
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class="text-center">Tu compra fue realizada exitosamente</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+
+
+
+                            </form>
+            
+                        </div>
+                        <!--/.Card-->
+            
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+            </div>
+        </main>
+        <!--Main layout-->
+    </div>
+
+    <script src="../../static/js/car2.js"></script>
+
+
+{% endblock %}

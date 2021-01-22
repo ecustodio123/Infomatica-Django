@@ -1,0 +1,213 @@
+{% extends 'layouts/base.html' %} {% load static %} 
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<div class="bg-grey col-md-4 py-8"></div>
+
+<div class="container">
+    <div class="row">
+        <h1 class="px-until-md-15px title-biggest mt-4-negative mb-2 z-index-front">CONTACTO</h1>
+    </div>
+    <div class="row mt-8 mt-until-md-2 mb-6 mb-until-md-2">
+
+        <div class="col-md-3">
+            <p class="mt-0 mb-until-md-3 text-regular">¿Dudas o preguntas? No dudes en comunicarte con nosotros para ayudarte.</p>					
+        </div>
+
+        <div class="col-md-4 offset-md-1 mb-4 mb-until-md-2">
+            <p class="text-smaller mt-0 mb-until-md-0" style="font-weight: 300">Teléfono</p>
+            <a class="text-regular link--black font-weight-regular" href="tel:+012057550">(+01) 205-7550</a>
+        </div>
+
+        <div class="col-md-4 mb-4 mb-until-md-2">
+            <p class="text-smaller mt-0 mb-until-md-0">Ubicación</p>
+            <span class="text-regular link--black font-weight-regular">Calle Pedro Salazar 120, Barranco, Lima, Perú</span>
+        </div>
+
+        <div class="col-md-3">
+            <ul class="social-links mt-until-md-2">
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/InfomaticaPeru">
+                        <img src="../../static/images/facebook-icon-black.png" alt="Logo-Fb-Infomática">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/InfomaticaPeru">
+                        <img src="../../static/images/instagram-icon.png" alt="Logo-Fb-Infomática">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/InfomaticaPeru">
+                        <img src="../../static/images/linkedin-icon.png" alt="Logo-Fb-Infomática">
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/InfomaticaPeru">
+                        <img src="../../static/images/youtube-icon.png" alt="Logo-Fb-Infomática">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-4 offset-md-1 mb-4 mb-until-md-2">
+            <p class="text-smaller mt-0 mb-until-md-0">Horarios de atención</p>
+            <span class="text-regular link--black font-weight-regular">L-V 08:00-18:00</span>
+        </div>
+
+        <div class="col-md-4 mb-4 mb-until-md-2">
+            <p class="text-smaller mt-0 mb-until-md-0">Email</p>
+            <a class="text-regular link--black font-weight-regular" target="_blank" href="mailto:info@infomatica.pe">info@infomatica.pe</a>
+        </div>
+    </div>
+</div>
+
+<div class="bg-grey py-4">
+    <div class="container" id="contact-form-container">
+        <!-- <div class="row">
+            <div class="col">
+                <h1 class="mt-0">Formulario de Contacto</h1>
+            </div>
+        </div> -->
+
+        {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                Mal!
+            </div>
+        {% endif %}
+
+        <h1>Registro de Contacto</h1>
+
+        <!-- <form id="contact-form" class="contact-form mt-5" action="https://www.infomatica.pe/contacto" method="POST"> -->
+        <form class="contact-form mt-5" action="{% url 'guardarContacto'  %}" method="POST">
+
+            {% csrf_token %}
+            {% if mensaje %}
+                <div class="alert alert-success" role="alert">
+                    Bien!
+                </div>
+            {% endif %}
+<!-- 
+            <input type="hidden" name="_token" value="">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form__label" for="name">
+                        Nombre de contacto
+                        <input class="form__input" type="text" name="name" id="name" placeholder="Tu Nombre">
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <label class="form__label" for="phone">
+                        Teléfono
+                        <input class="form__input" type="tel" name="phone" id="phone" placeholder="+00 000 000 000">
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form__label" for="name">
+                        Correo Electrónico
+                        <input class="form__input" type="email" name="name" id="name" placeholder="ejemplo@email.com">
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <label class="form__label" for="phone">
+                        Nombre de Empresa u Organización
+                        <input class="form__input" type="text" name="phone" id="phone" placeholder="Tu empresa u Organización">
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form__label" for="name">
+                        Identificador Tributario
+                        <input class="form__input" type="text" name="name" id="name" placeholder="RUC, RUT, NIT o RIT">
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <label class="form__label" for="phone">
+                        ¿Cómo supiste de nosotros?
+                        
+                        <select class="form__select" name="howknow" id="howknow">
+                            <option value="0" disabled="disabled" selected="selected">Elije una opción</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="Google">Google</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="TV">TV</option>
+                            <option value="Radio">Radio</option>
+                            <option value="Por un amigo">Por un amigo</option>
+                        </select>
+
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form__label" for="content">
+                        Cuéntanos, ¿En qué podemos ayudarte?
+                        <textarea class="form__textarea" name="content" id="content" cols="30" rows="10" placeholder="Escribe tu mensaje aquí"></textarea>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="g-recaptcha" data-sitekey="6LewbjYaAAAAANs6IVH7Pz2nhF8TiCv8wP23pC2a"></div>
+                </div>
+                <div class="col-md-2 mt-1">
+                        <input class="form__submit" type="submit" name="submit" value="ENVIAR">
+                </div>
+            </div>
+        </form> -->
+
+            {{ form|crispy }}
+
+            <button type="submit" class="btn-primary">Enviar</button>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- Mapa -->
+<div class="map-responsive">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3900.575338417988!2d-77.0216006851838!3d-12.141181746969663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2spe!4v1611010339869!5m2!1ses!2spe" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</div>
+<!-- Mapa -->
+
+<div class="container">
+    <div class="row my-6">
+        <div class="col-md-5 aos-init aos-animate" data-aos="fade-up">
+            <Strong>Bolsa de Trabajo</Strong>
+            <p class="text-regular my-4">
+                ¿Quieres formar parte de la familia INFOMÁTICA? Déjanos tus datos y CV para comunicarnos contigo al abrirse una posición que requiera de tus habilidades.
+            </p>
+        </div>
+        
+        <div class="col-md-3 offset-md-1 aos-init aos-animate" data-aos="fade-up">
+            <Strong>Escríbenos:</Strong>
+            <p class="my-3">
+                <a class="link link--black" href="mailto:talento@infomatica.pe">talento@infomatica.pe</a>
+            </p>
+            <form id="form-cv" class="form-cv" action="https://www.infomatica.pe/cv" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="QuP6Ec6Pan4gtzyMxXWQf91N6fefHyUwAJG0mR58">
+            <label for="cv">
+                <input class="d-none" id="cv" type="file" name="cv">
+                <div class="btn-scroll-top aos-init aos-animate" data-aos="fade-up">
+                    <img id="cv-icon" src="../../static/images/icon-scroll-up.png" data-default="https://www.infomatica.pe/images/icon-scroll-up.png" data-loading="https://www.infomatica.pe/images/cv-loading.svg">
+                    <span>Adjunta tu CV	</span>
+                </div>
+            </label>
+            </form>
+            <small id="form-response" class="d-none text-danger">Sólo aceptamos los formatos doc, docx y pdf</small>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
